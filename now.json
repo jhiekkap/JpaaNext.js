@@ -1,0 +1,10 @@
+{
+    "build": {
+        "env": {
+            "PASSWORD": "@password"
+        }
+    },
+    "env": {
+        "PASSWORD": "@password"
+    }
+}
