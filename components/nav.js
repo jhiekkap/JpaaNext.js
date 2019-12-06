@@ -1,9 +1,11 @@
 import React from 'react'
 import Link from 'next/link'
+import { Button } from 'react-bootstrap'
 
 const links = [
-  { href: 'https://zeit.co/now', label: 'ZEIT' },
-  { href: 'https://github.com/zeit/next.js', label: 'GitHub' },
+  { href: '/', label: 'HOME' },
+  { href: '/tables', label: 'TAULUT' },
+  { href: '/projects', label: 'HANKKEET' },
 ].map(link => {
   link.key = `nav-link-${link.href}-${link.label}`
   return link
@@ -11,15 +13,11 @@ const links = [
 
 const Nav = () => (
   <nav>
-    <ul>
-      <li>
-        <Link href="/">
-          <a>Home</a>
-        </Link>
-      </li>
+    <ul> 
       {links.map(({ key, href, label }) => (
         <li key={key}>
-          <a href={href}>{label}</a>
+         {/*  <a href={href}>{label}</a> */}
+          <Link href={href} ><a><Button variant='light'>{label}</Button></a></Link>
         </li>
       ))}
     </ul>
@@ -35,7 +33,7 @@ const Nav = () => (
       }
       ul {
         display: flex;
-        justify-content: space-between;
+        justify-content: space-even;
       }
       nav > ul {
         padding: 4px 16px;
