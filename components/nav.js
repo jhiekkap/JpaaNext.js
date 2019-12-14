@@ -13,15 +13,18 @@ const links = [
 
 const Nav = () => (
   <nav>
-    <ul> 
+    <ul>
       {links.map(({ key, href, label }) => (
         <li key={key}>
-         {/*  <a href={href}>{label}</a> */}
-          <Link href={href} ><a><Button variant='light'>{label}</Button></a></Link>
+          {/*  <a href={href}>{label}</a> */}
+          <Link href={href}>
+            <a>
+              <Button variant='light'>{label}</Button>
+            </a>
+          </Link>
         </li>
       ))}
     </ul>
-
     <style jsx>{`
       :global(body) {
         margin: 0;

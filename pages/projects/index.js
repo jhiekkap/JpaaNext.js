@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
+import 'bootstrap/dist/css/bootstrap.min.css'
+import '../../index.css'
 import { Container, Row, Col, Table, Card, ListGroup } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "../../index.css"
@@ -19,7 +21,7 @@ const Projects = () => {
     const fetchJSON = async () => {
       const body = await axios.get('/api/all/Projects')
       const jsonProjects = JSON.parse(body.data[0].Jsoni)
-      console.log('JSON PROJEKTIT', jsonProjects)
+      console.log('Projects as JSON', jsonProjects)
       setProjects(jsonProjects)
 
       const tablesOfProjects = [
@@ -33,7 +35,7 @@ const Projects = () => {
       ]
         .map(table => table[0])
         .filter(table => table)
-      console.log('TABLETIT1', tablesOfProjects)
+      console.log('Tables of projects', tablesOfProjects)
 
       tablesOfProjects.forEach(table => {
         fetchTable(table).then(wholeTable => {
@@ -102,7 +104,7 @@ const Projects = () => {
 
   const pointsOfDistrict = (project, district) => {
     if (project.meters.length > 0) {
-      console.log('AAAAAAAAAA', project.meters)
+      console.log('Project meters:', project.meters)
       const pointsList = project.meters.map(
         meter => pointsOfMeter(district, meter).points
       )

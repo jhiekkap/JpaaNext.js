@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import readXlsxFile from 'read-excel-file'
+import 'bootstrap/dist/css/bootstrap.min.css'
+import '../../index.css'
 import { Container, Row } from 'react-bootstrap'
 import axios from 'axios'
 import ShowTable from './ShowTable'
@@ -104,12 +106,12 @@ const Tables = () => {
 
           setTimeout(() => {
             fetchAllTableNames().then(allTables => setTables(allTables))
-            fetchTable(tableName).then(wholeTable => {
+            .then(() => fetchTable(tableName).then(wholeTable => {
               setCurrentTable(wholeTable)
               setCloneTables([wholeTable])
               setToggleColumnsOrder(columns.map(col => true))
-            })
-          }, 2000)
+            }))
+          }, 3000)
         } catch (error) {
           console.log(error)
         }

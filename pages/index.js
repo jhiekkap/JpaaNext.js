@@ -83,7 +83,7 @@ const Home = () => {
     <Container>
     <div>
       <Head>
-        <title>Home</title>
+        <title>JPAA</title>
         <link rel='icon' href='/favicon.ico' />
       </Head>
 
@@ -115,7 +115,7 @@ const Home = () => {
           </form>
         </div>
         <td>Syötä hinta</td>
-        <div class='row'>
+        <div className='row'>
           <TextField
             id='Hinta'
             type='text'
@@ -140,7 +140,7 @@ const Home = () => {
         </div>
         <div>
           <td>Syötä Rakennusvuosi</td>
-          <div class='row'>
+          <div className='row'>
             <TextField
               value={Rvuosia}
               onChange={({ target }) => {
