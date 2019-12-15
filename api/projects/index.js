@@ -14,6 +14,6 @@ module.exports = async (req, res) => {
     console.log(error)
   } finally {
     console.log('Closing connection')
-    await con.close()
+    //await con.close()
   }
 }
