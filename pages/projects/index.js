@@ -160,7 +160,6 @@ const Projects = () => {
           projects.length > 0 &&
           projects.map((project, p) => (
             <Card key={p} style={{ width: '36rem', marginTop: '1rem' }}>
-              {/*  <Card.Img variant='top' src='holder.js/100px180' /> */}
               <Card.Body>
                 <Card.Title className='center'>
                   <span onClick={() => handleShowProject(p)}>
@@ -176,7 +175,7 @@ const Projects = () => {
                       }
                     }}
                   >
-                    <img src="static/deleteIcon.png"/>
+                    <img src='static/deleteIcon.png' />
                   </span>
                   &nbsp;
                   <span>
@@ -236,7 +235,7 @@ const Projects = () => {
                                   />
                                 </span>
                                 <span onClick={() => handleDeleteMeter(p, m)}>
-                                <img src="static/deleteIcon.png"/>
+                                  <img src='static/deleteIcon.png' />
                                 </span>
                                 <Table striped bordered hover>
                                   <thead>

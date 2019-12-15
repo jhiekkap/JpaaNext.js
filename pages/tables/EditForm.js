@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Button, Row, Form } from 'react-bootstrap' 
+import { Button, Row, Form } from 'react-bootstrap'
 const EditForm = ({
   currentTable,
   setCurrentTable,
@@ -20,12 +20,7 @@ const EditForm = ({
 
   const handleFindCell = e => {
     const findString = e.target.value
-    /* const filtered = []
-      .concat(...currentTable)
-      .find(string => string.toLowerCase().match(findString.toLowerCase()))
-    console.log('FILTERED', filtered) */
     setFindCell(findString)
-    //setFindMatch(filtered)
   }
 
   const handleReplace = e => {
@@ -76,12 +71,10 @@ const EditForm = ({
           onChange={handleReplaceCell}
         />
         <Button variant='light' onClick={handleUndo}>
-         <img 
-          src="/static/undoArrow.png"
-          alt="undo" /> 
+          <img src='/static/undoArrow.png' alt='undo' />
         </Button>
         <Button variant='light' onClick={handleRedo}>
-            <img  src="/static/redoArrow.png" alt="redo" />  
+          <img src='/static/redoArrow.png' alt='redo' />
         </Button>
       </Form>
     </Row>

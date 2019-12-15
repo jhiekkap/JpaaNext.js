@@ -9,9 +9,8 @@ const ProjectForm = ({ projects, setProjects, edit, project, projectID }) => {
   const [story, setStory] = useState('')
   const [districts, setDistricts] = useState([])
   const [show, setShow] = useState(true)
-  const [meters, setMeters] = useState([]) 
+  const [meters, setMeters] = useState([])
 
-  //const handleClose = () => setShowModal(false)
   const handleCancel = () => {
     setShowModal(false)
     setTitle('')
@@ -21,7 +20,18 @@ const ProjectForm = ({ projects, setProjects, edit, project, projectID }) => {
     setMeters([])
   }
 
-  const allDistricts = ['Kyrölä', 'Jamppa', 'Keskusta', 'Loutti','Pajala','Pöytäalho','Ahjo','Isokytö','Mikonkorpi','Nummenkylä']
+  const allDistricts = [
+    'Kyrölä',
+    'Jamppa',
+    'Keskusta',
+    'Loutti',
+    'Pajala',
+    'Pöytäalho',
+    'Ahjo',
+    'Isokytö',
+    'Mikonkorpi',
+    'Nummenkylä',
+  ]
 
   const handleSave = () => {
     let cloneProjects = [...projects]
@@ -33,16 +43,16 @@ const ProjectForm = ({ projects, setProjects, edit, project, projectID }) => {
       meters,
     }
     if (edit) {
-      cloneProjects = cloneProjects.map((proj, p) => p === projectID ? newProject : proj)
+      cloneProjects = cloneProjects.map((proj, p) =>
+        p === projectID ? newProject : proj
+      )
     } else {
       cloneProjects.push(newProject)
     }
     setProjects(cloneProjects)
     handleCancel()
     console.log(cloneProjects)
-    axios
-      .post('/api/projects', cloneProjects)
-      .then(res => console.log(res))
+    axios.post('/api/projects', cloneProjects).then(res => console.log(res))
   }
   const handleShow = () => {
     setShowModal(true)
@@ -70,7 +80,9 @@ const ProjectForm = ({ projects, setProjects, edit, project, projectID }) => {
           LUO UUSI HANKE
         </Button>
       ) : (
-        <span onClick={handleShow}><img src="static/editIcon.png"/></span>
+        <span onClick={handleShow}>
+          <img src='static/editIcon.png' />
+        </span>
       )}
 
       <Modal show={showModal} onHide={handleCancel}>

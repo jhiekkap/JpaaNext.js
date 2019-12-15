@@ -30,9 +30,6 @@ const MeterForm = ({
   const [points, setPoints] = useState(null)
   const [meterTable, setMeterTable] = useState([])
 
-
-
-  //const handleClose = () => setShowModal(false)
   const handleCancel = () => {
     setShowModal(false)
     setTitle('')
@@ -68,9 +65,7 @@ const MeterForm = ({
     setProjects(cloneProjects)
     handleCancel()
     console.log('SAVING / UPDATING PROJECTS:', cloneProjects)
-    axios
-      .post('api/projects', cloneProjects)
-      .then(res => console.log(res))
+    axios.post('api/projects', cloneProjects).then(res => console.log(res))
   }
   const handleShow = () => {
     setShowModal(true)
@@ -149,9 +144,10 @@ const MeterForm = ({
           UUSI MITTARI
         </span>
       ) : (
-        <span onClick={handleShow}><img src="static/editIcon.png"/></span>
-      )}
-
+        <span onClick={handleShow}>
+          <img src='static/editIcon.png' />
+        </span>
+      )} 
       <Modal show={showModal} onHide={handleCancel}>
         <Modal.Header closeButton>
           <Modal.Title>
@@ -174,11 +170,12 @@ const MeterForm = ({
               id='dropdown-basic-button'
               title={!table ? 'VALITSE TAULU' : table}
             >
-              {tables && tables.map((table, i) => (
-                <Dropdown.Item key={i} onClick={() => handleSetTable(table)}>
-                  {table}
-                </Dropdown.Item>
-              ))}
+              {tables &&
+                tables.map((table, i) => (
+                  <Dropdown.Item key={i} onClick={() => handleSetTable(table)}>
+                    {table}
+                  </Dropdown.Item>
+                ))}
             </DropdownButton>
 
             {meterTable && meterTable.length > 0 && (
