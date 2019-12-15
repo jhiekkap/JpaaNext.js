@@ -1,27 +1,19 @@
-module.exports = async (req, res) => {
-  var mysql = require('mysql')
-  console.log(`UPDATE PROJECTS`, new Date())
-  const options = {
-    host: 'remotemysql.com',
-    port: '3306',
-    user: process.env.DBUSERNAME,
-    password: process.env.DBPASSWORD,
-    database: 'kW8zfl2jBR',
-  }
-  const updatedJSON = req.body
+const con = require('../_connection')
 
-  try {
-    const con = await mysql.createConnection(options)
+module.exports = async (req, res) => {  
+  const updatedJSON = req.body
+  console.log(`Updating projects`, updatedJSON, new Date())  
+  try { 
     const sql = `UPDATE Projects SET Jsoni = (?) WHERE ID=1`
     console.log('UPDATE SQL', sql)
-    con.query(sql, JSON.stringify(updatedJSON), (error, result, fields) => {
-      //res.send('Projects JSON succesfully updated', result)
-      console.log('UPDATE SQL', sql, result)
-      if (error) console.error(error)
-    })
-    if (con) con.end()
+    const result = await con.query(sql, JSON.stringify(updatedJSON))
+    console.log('Projects updated',result)
+    res.send('Projects sucsessfully updated') 
   } catch (error) {
     res.send(error)
     console.log(error)
+  } finally {
+    console.log('Closing connection')
+    await con.close()
   }
 }

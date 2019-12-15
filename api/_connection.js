@@ -9,7 +9,7 @@ const config = {
   password: process.env.DBPASSWORD,
   database: 'kW8zfl2jBR',
 }
-const con = () => { 
+function con(){ 
   const connection = mysql.createConnection( config );
   return {
     query( sql, args ) {

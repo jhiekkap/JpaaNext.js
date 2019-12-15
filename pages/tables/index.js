@@ -5,12 +5,11 @@ import '../../index.css'
 import { Container, Row } from 'react-bootstrap'
 import axios from 'axios'
 import ShowTable from './ShowTable'
-import FileForm from './FileForm' 
+import FileForm from './FileForm'
 import EditForm from './EditForm'
 import Nav from '../../components/nav'
 import { cleanName, cleanFile } from '../../utils/helpers'
 import { fetchTable, fetchAllTableNames } from '../../utils/fetchData'
-const endpoint = '/api/'
 
 const Tables = () => {
   const [tables, setTables] = useState([])
@@ -21,13 +20,13 @@ const Tables = () => {
   const [edit, setEdit] = useState(false)
   const [findCell, setFindCell] = useState('')
   const [undoIndex, setUndoIndex] = useState(0)
-  const [showTable, setShowTable] = useState('') 
+  const [showTable, setShowTable] = useState('')
 
   useEffect(() => {
     fetchAllTableNames().then(allTables => {
-      console.log('AAAALLLLL TABLEES', allTables)
-      setTables(allTables.filter(table => table !== "Projects"))
-    }) 
+      console.log('TABLES:Fetching all table names', allTables)
+      setTables(allTables.filter(table => table !== 'Projects'))
+    })
   }, [])
 
   const upDateCurrentTable = newCurrentTable => {
@@ -47,14 +46,14 @@ const Tables = () => {
 
   const handleUploadFile = files => {
     console.log('UPLOAD FILE', files)
-    setShowTable('') 
+    setShowTable('')
     const file = files[0]
     const type = file.type
     const name = cleanName(file.name.split('.')[0])
-    setTableName(name) 
+    setTableName(name)
     if (type === 'text/csv') {
       /////JOS CSV
-      console.log(type, name, file) 
+      console.log(type, name, file)
       const reader = new FileReader()
 
       reader.onload = e => {
@@ -96,22 +95,22 @@ const Tables = () => {
         const table = currentTable.slice(1)
         console.log('TABLE CONTENTS', table)
         try {
-          const createResponse = await axios.post(endpoint + 'create', {
-            ///LUO TAULU
+          const createResponse = await axios.post('api/create', {
             tableName,
             columns,
             table,
           })
           console.log(createResponse)
 
-          setTimeout(() => {
-            fetchAllTableNames().then(allTables => setTables(allTables))
-            .then(() => fetchTable(tableName).then(wholeTable => {
-              setCurrentTable(wholeTable)
-              setCloneTables([wholeTable])
-              setToggleColumnsOrder(columns.map(col => true))
-            }))
-          }, 3000)
+          fetchAllTableNames()
+            .then(allTables => setTables(allTables))
+            .then(() =>
+              fetchTable(tableName).then(wholeTable => {
+                setCurrentTable(wholeTable)
+                setCloneTables([wholeTable])
+                setToggleColumnsOrder(columns.map(() => true))
+              })
+            )
         } catch (error) {
           console.log(error)
         }
@@ -136,7 +135,7 @@ const Tables = () => {
         showTable={showTable}
         tableName={tableName}
         setTableName={setTableName}
-        setToggleColumnsOrder={setToggleColumnsOrder}  
+        setToggleColumnsOrder={setToggleColumnsOrder}
       />
       {currentTable.length > 0 && (
         <EditForm

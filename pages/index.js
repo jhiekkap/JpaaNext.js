@@ -70,7 +70,7 @@ const Home = () => {
 
   useEffect(() => {
     fetchAllTableNames().then(allTables => {
-      console.log('AAAALLLLL TABLEES', allTables)
+      console.log('HOME: Fetching all table names', allTables)
       setTables(allTables)
     })
   }, [])

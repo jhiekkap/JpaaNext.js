@@ -1,14 +1,14 @@
-const con = require('./_connection')
+const con = require('../_connection')
 
 module.exports = async (req, res) => { 
   const { tableName, columns, table } = req.body 
-  console.log(`CREATE TABLE`, table, new Date())
+  console.log(`Creating table`, table, new Date())
   const tableSql = `CREATE TABLE ${tableName} (ID int NOT NULL AUTO_INCREMENT, ${columns
     .map(col => `${col.name} ${col.type}`)
     .join(',')}, PRIMARY KEY (ID))` 
   try {
     await con.query(tableSql)
-    console.log('Tle created')
+    console.log('New table created')
     const rowSql = `INSERT INTO ${tableName} (${columns
       .map(col => col.name)
       .join(',')}) VALUES ?`

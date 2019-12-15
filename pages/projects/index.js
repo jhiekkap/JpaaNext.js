@@ -47,7 +47,7 @@ const Projects = () => {
     }
 
     fetchAllTableNames().then(allNames => {
-      console.log('ALL NAMES', allNames)
+      console.log('PROJECTS: Fetching all table names', allNames)
       setTables(allNames.filter(table => table !== 'Projects'))
       fetchJSON()
     })
@@ -58,8 +58,7 @@ const Projects = () => {
     const table = uploadedTables.find(table => table.name === meter.table)
       .content
     const valueCol = table[0].indexOf(meter.col)
-    const distCol = table[0].indexOf('Kaupunginosa')
-
+    const distCol = table[0].indexOf('Kaupunginosa') 
     const myValues = table
       .filter(row => row[distCol] === district)
       .map((row, r) => row[valueCol])
@@ -104,7 +103,7 @@ const Projects = () => {
 
   const pointsOfDistrict = (project, district) => {
     if (project.meters.length > 0) {
-      console.log('Project meters:', project.meters)
+      //console.log('Project meters:', project.meters)
       const pointsList = project.meters.map(
         meter => pointsOfMeter(district, meter).points
       )
