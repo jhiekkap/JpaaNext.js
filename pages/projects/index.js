@@ -134,7 +134,7 @@ const Projects = () => {
     )
     setProjects(cloneProjects)
     axios
-      .put('http://localhost:3001/projects', cloneProjects)
+      .put('api/projects', cloneProjects)
       .then(res => console.log(res))
       .catch(error => console.error(error))
   }
@@ -144,7 +144,7 @@ const Projects = () => {
 
     setProjects(cloneProjects)
     axios
-      .put('http://localhost:3001/projects', cloneProjects)
+      .put('api/projects', cloneProjects)
       .then(res => console.log(res))
   }
 

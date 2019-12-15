@@ -10,7 +10,7 @@ module.exports = async (req, res) => {
   } catch (error) {
     res.send(error)
     console.log(error)
-  } /* finally {
+  } /* finally {          TILAPÄINEN VIRITYS - ZEITISSÄ EI TOIMINUT JOKA TOINEN KERTA TÄMÄN KANSSA...????
     await con.close()
   } */
 }

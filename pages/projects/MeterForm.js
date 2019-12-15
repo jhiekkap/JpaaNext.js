@@ -69,7 +69,7 @@ const MeterForm = ({
     handleCancel()
     console.log('SAVING / UPDATING PROJECTS:', cloneProjects)
     axios
-      .put('http://localhost:3001/projects', cloneProjects)
+      .post('api/projects', cloneProjects)
       .then(res => console.log(res))
   }
   const handleShow = () => {

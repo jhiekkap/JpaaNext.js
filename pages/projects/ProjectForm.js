@@ -9,7 +9,7 @@ const ProjectForm = ({ projects, setProjects, edit, project, projectID }) => {
   const [story, setStory] = useState('')
   const [districts, setDistricts] = useState([])
   const [show, setShow] = useState(true)
-  const [meters, setMeters] = useState([])
+  const [meters, setMeters] = useState([]) 
 
   //const handleClose = () => setShowModal(false)
   const handleCancel = () => {
