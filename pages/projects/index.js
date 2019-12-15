@@ -3,8 +3,8 @@ import axios from 'axios'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import '../../index.css'
 import { Container, Row, Col, Table, Card, ListGroup } from 'react-bootstrap'
-import 'bootstrap/dist/css/bootstrap.min.css';
-import "../../index.css"
+import 'bootstrap/dist/css/bootstrap.min.css'
+import '../../index.css'
 import Nav from '../../components/nav'
 import MeterForm from './MeterForm'
 import ProjectForm from './ProjectForm'
@@ -46,11 +46,12 @@ const Projects = () => {
       })
     }
 
-    fetchAllTableNames().then(allNames => {
-      console.log('PROJECTS: Fetching all table names', allNames)
-      setTables(allNames.filter(table => table !== 'Projects'))
-      fetchJSON()
-    })
+    fetchAllTableNames()
+      .then(allNames => {
+        console.log('PROJECTS: Fetching all table names', allNames)
+        setTables(allNames.filter(table => table !== 'Projects'))
+      })
+      .then(() => fetchJSON())
   }, [])
 
   const districtsAverageValue = (district, meter) => {
@@ -58,7 +59,7 @@ const Projects = () => {
     const table = uploadedTables.find(table => table.name === meter.table)
       .content
     const valueCol = table[0].indexOf(meter.col)
-    const distCol = table[0].indexOf('Kaupunginosa') 
+    const distCol = table[0].indexOf('Kaupunginosa')
     const myValues = table
       .filter(row => row[distCol] === district)
       .map((row, r) => row[valueCol])
@@ -143,9 +144,7 @@ const Projects = () => {
     const cloneProjects = [...projects].filter((project, i) => i !== projectID)
 
     setProjects(cloneProjects)
-    axios
-      .put('api/projects', cloneProjects)
-      .then(res => console.log(res))
+    axios.put('api/projects', cloneProjects).then(res => console.log(res))
   }
 
   return (
@@ -177,7 +176,7 @@ const Projects = () => {
                       }
                     }}
                   >
-                    POISTA
+                    <img src="static/deleteIcon.png"/>
                   </span>
                   &nbsp;
                   <span>
@@ -199,19 +198,19 @@ const Projects = () => {
                     </Card.Text>
 
                     <span className='center'>
-                      {project.districts 
-                      .sort((a, b) => {
-                        const A = pointsOfDistrict(project, a)
-                        const B = pointsOfDistrict(project, b)
-                        return A > B ? -1 : B > A ? 1 : 0
-                      })
-                      .map(
-                        dist =>
-                          dist +
-                          ': ' +
-                          pointsOfDistrict(project, dist).toFixed(2) +
-                          '  '
-                      )}
+                      {project.districts
+                        .sort((a, b) => {
+                          const A = pointsOfDistrict(project, a)
+                          const B = pointsOfDistrict(project, b)
+                          return A > B ? -1 : B > A ? 1 : 0
+                        })
+                        .map(
+                          dist =>
+                            dist +
+                            ': ' +
+                            pointsOfDistrict(project, dist).toFixed(2) +
+                            '  '
+                        )}
                     </span>
                     <br />
                     <h6 className='center'>MITTARIT:</h6>
@@ -237,7 +236,7 @@ const Projects = () => {
                                   />
                                 </span>
                                 <span onClick={() => handleDeleteMeter(p, m)}>
-                                  {'      '}POISTA
+                                <img src="static/deleteIcon.png"/>
                                 </span>
                                 <Table striped bordered hover>
                                   <thead>
@@ -249,35 +248,35 @@ const Projects = () => {
                                   </thead>
                                   <tbody>
                                     {project.districts
-                                    .sort((a, b) => {
-                                      const A = pointsOfMeter(a, meter)
-                                      const B = pointsOfMeter(b, meter)
-                                      return A > B ? -1 : B > A ? 1 : 0
-                                    })
-                                    .map((dist, d) => (
-                                      <tr key={d}>
-                                        <td>{dist}</td>
-                                        <td>
-                                          {districtsAverageValue(
-                                            dist,
-                                            meter
-                                          ).distAVG.toFixed(2)}
-                                          {meter.number && meter.unit} /{' '}
-                                          {pointsOfMeter(
-                                            dist,
-                                            meter
-                                          ).allAVG.toFixed(2)}
-                                          {meter.number && meter.unit}{' '}
-                                        </td>
-                                        <td>
-                                          {pointsOfMeter(
-                                            dist,
-                                            meter
-                                          ).points.toFixed(5)}{' '}
-                                          / 1
-                                        </td>
-                                      </tr>
-                                    ))}
+                                      .sort((a, b) => {
+                                        const A = pointsOfMeter(a, meter)
+                                        const B = pointsOfMeter(b, meter)
+                                        return A > B ? -1 : B > A ? 1 : 0
+                                      })
+                                      .map((dist, d) => (
+                                        <tr key={d}>
+                                          <td>{dist}</td>
+                                          <td>
+                                            {districtsAverageValue(
+                                              dist,
+                                              meter
+                                            ).distAVG.toFixed(2)}
+                                            {meter.number && meter.unit} /{' '}
+                                            {pointsOfMeter(
+                                              dist,
+                                              meter
+                                            ).allAVG.toFixed(2)}
+                                            {meter.number && meter.unit}{' '}
+                                          </td>
+                                          <td>
+                                            {pointsOfMeter(
+                                              dist,
+                                              meter
+                                            ).points.toFixed(5)}{' '}
+                                            / 1
+                                          </td>
+                                        </tr>
+                                      ))}
                                   </tbody>
                                 </Table>
                               </Col>

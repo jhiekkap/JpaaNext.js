@@ -149,7 +149,7 @@ const MeterForm = ({
           UUSI MITTARI
         </span>
       ) : (
-        <span onClick={handleShow}>MUOKKAA </span>
+        <span onClick={handleShow}><img src="static/editIcon.png"/></span>
       )}
 
       <Modal show={showModal} onHide={handleCancel}>

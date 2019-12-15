@@ -5,8 +5,7 @@ const endpoint = 'api/'
 export const fetchAllTableNames = async () => {
   console.log('fetching .....')
   try {
-    const body = await axios.get(endpoint + 'all')
-    console.log('TABLES', body.data)
+    const body = await axios.get(endpoint + 'all') 
     return body.data
   } catch (error) {
     console.error(error)

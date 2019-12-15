@@ -13,7 +13,7 @@ function EditMeterForm() {
   
     return (
       <> 
-        <span onClick={handleShow}> EDIT   </span>
+        <span onClick={handleShow}> <img src="static/editIcon.png"/>  </span>
   
         <Modal show={show} onHide={handleClose}>
           <Modal.Header closeButton>

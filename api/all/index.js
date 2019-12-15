@@ -5,12 +5,12 @@ module.exports = async (req, res) => {
   try { 
     const result = await con.query('SHOW TABLES') 
     const allTables = result.map(table => table.Tables_in_kW8zfl2jBR)
-    console.log('Tanles in database:', allTables) 
-    await res.json(allTables)
+    console.log('Tables in database:', allTables) 
+    await res.json(allTables) 
   } catch (error) {
-    res.send(error)
-    console.log(error)
-  } /* finally {          TILAPÄINEN VIRITYS - ZEITISSÄ EI TOIMINUT JOKA TOINEN KERTA TÄMÄN KANSSA...????
+    await res.send(error)
+    console.log(error) 
+  } /* finally {          
     await con.close()
   } */
 }

@@ -8,12 +8,12 @@ module.exports = async (req, res) => {
     console.log('UPDATE SQL', sql)
     const result = await con.query(sql, JSON.stringify(updatedJSON))
     console.log('Projects updated',result)
-    res.send('Projects successfully updated') 
+    await res.send('Projects successfully updated') 
   } catch (error) {
-    res.send(error)
+    await res.send(error)
     console.log(error)
   } finally {
     console.log('Closing connection')
-    //await con.close()
+    await con.close()
   }
 }

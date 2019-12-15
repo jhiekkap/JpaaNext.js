@@ -1,6 +1,6 @@
 const con = require('../_connection')
 
-module.exports = (req, res) => {
+module.exports = (req, res) => { 
   const {
     query: { table },
   } = req
