@@ -1,11 +1,9 @@
-import axios from 'axios'
-//const endpoint = 'http://localhost:3001/'
-const endpoint = 'api/'
+import axios from 'axios' 
 
 export const fetchAllTableNames = async () => {
-  console.log('fetching .....')
+  console.log('fetching...')
   try {
-    const body = await axios.get(endpoint + 'all') 
+    const body = await axios.get('api/all') 
     return body.data
   } catch (error) {
     console.error(error)
@@ -13,9 +11,9 @@ export const fetchAllTableNames = async () => {
 } 
 
 export const fetchTable = async table => {
-  console.log('fetching .....')
+  console.log('fetching...')
   try {
-    const body = await axios.get(endpoint + 'all/' + table)
+    const body = await axios.get('api/all/' + table)
     console.log('TABLET:', table, body.data)
     const { columns, rows } = body.data
     const wholeTable = [columns].concat(rows)

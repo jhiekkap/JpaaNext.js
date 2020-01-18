@@ -3,6 +3,7 @@ import readXlsxFile from 'read-excel-file'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import '../../index.css'
 import { Container, Row } from 'react-bootstrap'
+import Head from 'next/head'
 import axios from 'axios'
 import ShowTable from './ShowTable'
 import FileForm from './FileForm'
@@ -122,6 +123,10 @@ const Tables = () => {
 
   return (
     <Container>
+      <Head>
+        <title>TABLES</title>
+        <link rel='icon' href='/favicon.ico' />
+      </Head>
       <Nav />
       <FileForm
         handleSaveFile={handleSaveFile}

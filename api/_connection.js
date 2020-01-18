@@ -1,5 +1,4 @@
-const mysql = require('mysql')
-
+const mysql = require('mysql') 
 const util = require( 'util' ); 
 
 const config = {
@@ -7,8 +6,9 @@ const config = {
   port: '3306',
   user: process.env.DBUSERNAME,
   password: process.env.DBPASSWORD,
-  database: 'kW8zfl2jBR',
+  database: 'kW8zfl2jBR', 
 }
+
 function con(){ 
   const connection = mysql.createConnection( config );
   return {

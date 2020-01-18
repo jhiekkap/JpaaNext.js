@@ -5,12 +5,16 @@ module.exports = async (req, res) => {
   try { 
     const result = await con.query('SHOW TABLES') 
     const allTables = result.map(table => table.Tables_in_kW8zfl2jBR)
-    console.log('Tables in database:', allTables) 
+    console.log('Tables in database:', allTables)
+    
     await res.json(allTables) 
+    //await con.close() 
   } catch (error) {
     await res.send(error)
     console.log(error) 
-  } /* finally {          
+  } /*  finally {          
     await con.close()
-  } */
-}
+  }   */
+} 
+ 
+ 

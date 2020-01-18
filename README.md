@@ -1,12 +1,6 @@
 # Järvenpää town & Helsinki Business College project
 
  
-- https://nextdemo.jhiekkap.now.sh/
+- https://nextdemojpaa.jhiekkap.now.sh/
 
-
-- git clone https://github.com/jhiekkap/JpaaNext.js
-- cd JpaaNext.js
-- npm install next
-- npm install -g now
-- npm install
-- now dev
+ 

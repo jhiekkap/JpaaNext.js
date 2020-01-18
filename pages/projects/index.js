@@ -2,9 +2,8 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import '../../index.css'
-import { Container, Row, Col, Table, Card, ListGroup } from 'react-bootstrap'
-import 'bootstrap/dist/css/bootstrap.min.css'
-import '../../index.css'
+import { Container, Row, Col, Table, Card, ListGroup } from 'react-bootstrap'  
+import Head from 'next/head'
 import Nav from '../../components/nav'
 import MeterForm from './MeterForm'
 import ProjectForm from './ProjectForm'
@@ -149,6 +148,10 @@ const Projects = () => {
 
   return (
     <Container>
+      <Head>
+        <title>PROJECTS</title>
+        <link rel='icon' href='/favicon.ico' />
+      </Head>
       <Nav />
       <Row className='center'>
         <Col>

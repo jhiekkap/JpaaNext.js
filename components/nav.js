@@ -15,8 +15,7 @@ const Nav = () => (
   <nav>
     <ul>
       {links.map(({ key, href, label }) => (
-        <li key={key}>
-          {/*  <a href={href}>{label}</a> */}
+        <li key={key}> 
           <Link href={href}>
             <a>
               <Button variant='light'>{label}</Button>

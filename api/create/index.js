@@ -18,8 +18,7 @@ module.exports = async (req, res) => {
   } catch (error) {
     await res.send(error)
     console.log(error)
-  } finally {
-    console.log('Closing connection')
+  } /* finally { 
     await con.close()
-  }
+  } */
 }

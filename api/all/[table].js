@@ -25,7 +25,7 @@ module.exports = (req, res) => {
         res.json({ columns, rows })
       }
     })
-    .then(() => con.close())
+    //.then(() => con.close())
     .catch(error => {
       res.send(error)
       console.log('error: ', error)
