@@ -22,7 +22,7 @@
     "react-bootstrap": "^1.0.0-beta.16",
     "react-dom": "16.12.0",
     "react-dropzone": "^10.2.1",
-    "read-excel-file": "^4.0.5",
+    "read-excel-file": "^4.1.0",
     "serverless-mysql": "^1.5.2",
     "util": "^0.12.1"
   }
